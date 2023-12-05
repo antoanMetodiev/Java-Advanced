@@ -12,8 +12,6 @@ public class BrowserHistory {
             if (inputs.equals("back")) {
                 if (stack.size() <= 1) {
                     System.out.println("no previous URLs");
-                    inputs = scanner.nextLine();
-                    continue;
                 } else {
                     stack.pop();
                     System.out.println(stack.peek());
