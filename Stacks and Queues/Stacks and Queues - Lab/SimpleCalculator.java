@@ -14,7 +14,6 @@ public class SimpleCalculator {
         int sum = 0;
         int counter = 0;
         while (!dataStack.isEmpty()) {
-
             counter++;
             if (counter == 1) {
                 sum += Integer.parseInt(dataStack.remove());
