@@ -15,7 +15,7 @@ public class BrowserHistory {
                     inputs = scanner.nextLine();
                     continue;
                 } else {
-                    String saver = stack.pop();
+                    stack.pop();
                     System.out.println(stack.peek());
                 }
             } else {
