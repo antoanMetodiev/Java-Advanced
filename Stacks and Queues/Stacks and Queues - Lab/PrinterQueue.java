@@ -20,7 +20,6 @@ public class PrinterQueue {
             else {
                 printerQueue.offer(fileName);
             }
-
             fileName = scanner.nextLine();
         }
 
