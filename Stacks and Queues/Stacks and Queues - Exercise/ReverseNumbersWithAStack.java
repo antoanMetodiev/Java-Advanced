@@ -6,9 +6,7 @@ import java.util.Scanner;
 public class ReverseNumbersWithAStack {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         Deque<Integer> numbers = new ArrayDeque<>();
-
         Arrays.stream(scanner.nextLine().split("\\s+"))
                 .map(Integer::parseInt)
                 .forEach(numbers::push);
