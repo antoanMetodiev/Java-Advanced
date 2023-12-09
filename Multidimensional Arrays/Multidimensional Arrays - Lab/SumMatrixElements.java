@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class SumMatrixElements {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         int[] sizeOfMatrix = Arrays.stream(scanner.nextLine()
                         .split(",\\s+"))
                 .mapToInt(Integer::parseInt)
@@ -16,7 +15,7 @@ public class SumMatrixElements {
         int[][] numbersCollector = new int[rows][col];
         int sum = 0;
         for (int i = 0; i < rows; i++) {
-
+            
             String[] numbers = scanner.nextLine().split(",\\s+");
             for (int j = 0; j < col; j++) {
                 numbersCollector[i][j] = Integer.parseInt(numbers[j]);
