@@ -24,14 +24,11 @@ public class IntersectionOfTwoMatrices {
                 secondMatrix[i][j] = symbols[j].charAt(0);
             }
         }
-        
         compareMatrix(firsrtMatrix, secondMatrix);
     }
 
     private static void compareMatrix(char[][] firsrtMatrix, char[][] secondMatrix) {
-
         for (int i = 0; i < firsrtMatrix.length; i++) {
-
             for (int j = 0; j < firsrtMatrix[i].length; j++) {
 
                 if (firsrtMatrix[i][j] == secondMatrix[i][j]) {
