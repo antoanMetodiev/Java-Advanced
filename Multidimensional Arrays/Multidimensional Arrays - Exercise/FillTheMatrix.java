@@ -5,9 +5,8 @@ public class FillTheMatrix {
         Scanner scanner = new Scanner(System.in);
 
         String[] input = scanner.nextLine().split(",\\s+");
-
         int n = Integer.parseInt(input[0]);
-        String addType = input[1]; // Тип по който добавяме елс.
+        String addType = input[1]; 
 
         int[][] matrix = new int[n][n];
 
@@ -16,7 +15,6 @@ public class FillTheMatrix {
         } else if (addType.equals("B")) {
             addingElsOnTypeB(matrix);
         }
-
         printMatrix(matrix);
     }
 
@@ -31,12 +29,6 @@ public class FillTheMatrix {
     }
 
     private static void addingElsOnTypeB(int[][] matrix) {
-
-
-//        1 6 7
-//        2 5 8
-//        3 4 9
-
         int counter = 1;
         for (int i = 0; i < matrix.length; i++) {
 
@@ -44,8 +36,7 @@ public class FillTheMatrix {
                 for (int j = 0; j < matrix[i].length; j++) {
                     matrix[j][i] = counter++;
                 }
-            }
-            else {
+            }else {
                 for (int j = matrix[i].length - 1; j >= 0 ; j--) {
                     matrix[j][i] = counter++;
                 }
