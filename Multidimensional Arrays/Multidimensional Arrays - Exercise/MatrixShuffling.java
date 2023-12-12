@@ -24,7 +24,6 @@ public class MatrixShuffling {
                 line = scanner.nextLine();
                 continue;
             }
-
             String command = data.get(0);
 
             if (!command.equals("swap")) {
@@ -33,13 +32,11 @@ public class MatrixShuffling {
                 continue;
             }
 
-            // Като индекси са :
             int firstElRow = Integer.parseInt(data.get(1));
             int firstElCol = Integer.parseInt(data.get(2));
 
             int secondElRow = Integer.parseInt(data.get(3));
             int secondElCol = Integer.parseInt(data.get(4));
-           //===============================================
 
             if (!(rowAndColValidate(firstElRow, firstElCol, secondElRow, secondElCol, rows, cols))) {
                 System.out.println("Invalid input!");
@@ -48,12 +45,10 @@ public class MatrixShuffling {
             }
 
             String saveFirstEl = matrix[firstElRow][firstElCol];
-
             matrix[firstElRow][firstElCol] = matrix[secondElRow][secondElCol];
             matrix[secondElRow][secondElCol] = saveFirstEl;
 
             printMatrix(matrix);
-
             line = scanner.nextLine();
         }
     }
@@ -74,7 +69,7 @@ public class MatrixShuffling {
         } else if (secondElCol < 0 || secondElCol >= cols) {
             return false;
         }
-
+        
         return true;
     }
 
