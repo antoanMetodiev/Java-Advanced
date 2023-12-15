@@ -37,10 +37,8 @@ public class SoftUniParty {
             }
             line = scanner.nextLine();
         }
-
         System.out.println(vipGuests.size() + guest.size());
         vipGuests.forEach(System.out::println);
         guest.forEach(System.out::println);
-
     }
 }
