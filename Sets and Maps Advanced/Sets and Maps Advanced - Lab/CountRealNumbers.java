@@ -6,12 +6,10 @@ import java.util.Scanner;
 public class CountRealNumbers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         double[] input = Arrays.stream(scanner.nextLine().split("\\s+")).mapToDouble(Double::parseDouble).toArray();
         Map<Double, Integer> realNumbers = new LinkedHashMap<>();
 
         for (int i = 0; i < input.length; i++) {
-
             if (realNumbers.containsKey(input[i])) {
                 int oldValue = realNumbers.get(input[i]);
                 realNumbers.put(input[i], oldValue + 1);
