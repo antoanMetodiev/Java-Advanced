@@ -4,7 +4,6 @@ import java.util.stream.Collectors;
 public class Voina_NumberGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         Set<Integer> firstPlayer = Arrays.stream(scanner.nextLine()
                         .split("\\s+"))
                 .map(Integer::parseInt)
@@ -25,11 +24,8 @@ public class Voina_NumberGame {
                 System.out.println("First player win!");
                 return;
             }
-
             int topCardOnFirstPlayer = firstPlayer.iterator().next();
             int topCardOnSecondPlayer = secondPlayer.iterator().next();
-
-            // iterator().next();  - взима винаги само първия елемент
 
             firstPlayer.remove(topCardOnFirstPlayer);
             secondPlayer.remove(topCardOnSecondPlayer);
@@ -37,9 +33,7 @@ public class Voina_NumberGame {
             if (topCardOnFirstPlayer > topCardOnSecondPlayer) {
                 firstPlayer.add(topCardOnFirstPlayer);
                 firstPlayer.add(topCardOnSecondPlayer);
-
             } else if (topCardOnFirstPlayer < topCardOnSecondPlayer) {
-
                 secondPlayer.add(topCardOnFirstPlayer);
                 secondPlayer.add(topCardOnSecondPlayer);
             }
