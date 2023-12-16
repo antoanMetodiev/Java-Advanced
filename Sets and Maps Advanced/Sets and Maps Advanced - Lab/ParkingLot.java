@@ -8,15 +8,12 @@ public class ParkingLot {
 
         Set<String> carNumbers = new LinkedHashSet<>();
         String line = scanner.nextLine();
-
         while (!"END".equals(line)) {
-
 
             String[] tokens = line.split(",\\s+");
             String action = tokens[0];
-
             String number = tokens[1];
-
+            
             switch (action) {
                 case "IN":
                     carNumbers.add(number);
@@ -25,15 +22,12 @@ public class ParkingLot {
                     carNumbers.remove(number);
                     break;
             }
-
             line = scanner.nextLine();
         }
 
         if (carNumbers.isEmpty()) {
             System.out.println("Parking Lot is Empty");
-
-        }
-        else {
+        }else {
             carNumbers.forEach(System.out::println);
         }
     }
