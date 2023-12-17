@@ -6,7 +6,6 @@ public class ProductShop {
 
         String input = scanner.nextLine();
         Map<String, Store> storeMap = new TreeMap<>();
-
         while (!"Revision".equals(input)) {
 
             String[] data = input.split(",\\s");
