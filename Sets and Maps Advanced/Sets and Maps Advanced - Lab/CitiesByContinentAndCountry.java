@@ -6,7 +6,6 @@ public class CitiesByContinentAndCountry {
 
         int n = Integer.parseInt(scanner.nextLine()); // continents
         Map<String, Map<String, List<String>>> continentsMap = new LinkedHashMap<>();
-
         for (int i = 0; i < n; i++) {
 
             String[] data = scanner.nextLine().split("\\s+");
@@ -35,7 +34,7 @@ public class CitiesByContinentAndCountry {
 
     private static void checkTheMapContainsCountry(Map<String, Map<String, List<String>>> continentsMap, String continent, String country, String town) {
         if (!continentsMap.get(continent).containsKey(country)) {
-
+            
             continentsMap.get(continent).put(country, new ArrayList<>());
             continentsMap.get(continent).get(country).add(town);
         } else {
