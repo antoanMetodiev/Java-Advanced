@@ -7,7 +7,6 @@ import java.util.List;
 
 public class SortLines {
     public static void main(String[] args) throws IOException {
-
         Path inputPath = Paths.get("D:\\Programming\\Java\\Courses\\04. Java-Advanced-Files-and-Streams-Lab-Resources\\input.txt");
         Path outputPath = Paths.get("D:\\Programming\\Java\\Courses\\04. Java-Advanced-Files-and-Streams-Lab-Resources\\06.SortLinesOutput.txt");
 
