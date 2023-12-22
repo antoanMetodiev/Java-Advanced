@@ -10,7 +10,6 @@ public class AllCapitals {
 
             String line = reader.readLine();
             while (line != null) {
-
                 writer.write(line.toUpperCase());
                 writer.write("\n");
                 line = reader.readLine();
@@ -18,6 +17,5 @@ public class AllCapitals {
         } catch (IOException e) {
             //
         }
-
     }
 }
