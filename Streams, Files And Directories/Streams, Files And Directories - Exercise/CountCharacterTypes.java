@@ -5,14 +5,12 @@ import java.util.List;
 
 public class CountCharacterTypes {
     public static void main(String[] args) throws IOException {
-
         int vowelsCount = 0;
         int otherSymbolsCount = 0;
         int punctuationCount = 0;
 
         List<Character> vowels = List.of('a', 'e', 'i', 'o', 'u');
         List<Character> otherSybmols = List.of('.', ',', '!', '?');
-
         PrintWriter writer = new PrintWriter(new FileWriter("D:\\Programming\\Java\\Courses\\Java Advanced\\04.Streams, Files And Directories\\Streams, Files And Directories - Exercise\\04. Java-Advanced-Files-and-Streams-Exercises-Resources\\Exercises Resources\\output.txt"));
 
         try  {
@@ -34,7 +32,6 @@ public class CountCharacterTypes {
         } catch (NullPointerException e) {
             //
         }
-        // Output:
         writer.println("Vowels: " + vowelsCount);
         writer.println("Other symbols: " + otherSymbolsCount);
         writer.println("Punctuation: " + punctuationCount);
