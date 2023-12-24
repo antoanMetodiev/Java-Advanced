@@ -21,7 +21,7 @@ public class FindEvensOrOdds {
         }
 
         Predicate<Integer> predicate;
-        String type = scanner.nextLine(); // Even or Odd
+        String type = scanner.nextLine(); 
         if (type.equals("even")) {
             predicate = e -> e % 2 == 0;
         } else {
