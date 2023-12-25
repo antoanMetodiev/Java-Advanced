@@ -7,10 +7,8 @@ import java.util.stream.Collectors;
 public class AddVAT {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        
         Function<Double, Double> addTwentyPercent = e -> e += e * 0.20;
-
-
         List<Double> digits = Arrays.stream(scanner.nextLine().split(", "))
                 .map(Double::parseDouble)
                 .map(addTwentyPercent)
