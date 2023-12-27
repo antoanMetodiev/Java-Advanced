@@ -13,10 +13,6 @@ public class Car {
         return String.format("The car is: %s unknown - -1 HP.", this.model);
     }
 
-    static String sayHello(){
-        return "hello";
-    }
-
     public Car(String model){
         this.model = model;
     }
