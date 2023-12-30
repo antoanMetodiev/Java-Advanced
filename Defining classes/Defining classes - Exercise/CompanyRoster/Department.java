@@ -6,7 +6,6 @@ public class Department {
     private String email;
     private int age;
 
-
     public Department(String name, double salary, String email, int age) {
         this.name = name;
         this.salary = salary;
