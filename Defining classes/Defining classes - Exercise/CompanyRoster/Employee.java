@@ -17,25 +17,25 @@ public class Employee {
         this.age = -1;
     }
 
-    public Employee(String name, double salary, String position, String department, String email, int age) { // Ако е равен на 6 и email-а е на 5та позиция
-        this(name, salary, position, department);                                                        // следователно остава age-а да ни бъде на 6та позиция
+    public Employee(String name, double salary, String position, String department, String email, int age) { 
+        this(name, salary, position, department);                                                        
         this.email = email;
         this.age = age;
     }
 
-    public Employee(String name, double salary, String position, String department, int age, String email) { // Ако е равен на 6 и age-а е на 5та позиция
-        this(name, salary, position, department);                                                        // следователно остава email-а да ни бъде на 6та позиция
+    public Employee(String name, double salary, String position, String department, int age, String email) { 
+        this(name, salary, position, department);                                                        
         this.age = age;
         this.email = email;
     }
 
-    public Employee(String name, double salary, String position, String department, String email) { // Ако е равен на 5 и email-a е на 5тата позиция
+    public Employee(String name, double salary, String position, String department, String email) { 
         this(name, salary, position, department);
         this.email = email;
         this.age = -1;
     }
 
-    public Employee(String name, double salary, String position, String department, int age) { // Ако е равен на 5 и age-a е на 5тата позиция
+    public Employee(String name, double salary, String position, String department, int age) { 
         this(name, salary, position, department);
         this.age = age;
         this.email = "n/a";
