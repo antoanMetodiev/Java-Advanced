@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Car {
-    double quantityFuel;
-    double fuelExpense; // РАЗХОД ЗА 1КМ.
-    int traveledDistance;
+    private double quantityFuel;
+    private double fuelExpense; 
+    private int traveledDistance;
 
     public Car(int quantityFuel, double fuelExpense, int traveledDistance) {
         this.quantityFuel = quantityFuel;
@@ -21,16 +21,13 @@ public class Car {
         double previousFuel = carsCollector.get(carModel).get(0).getQuantityFuel();
 
         if (previousFuel - spentFuel >= 0) {
-
+        
             carsCollector.get(carModel).get(0).setQuantityFuel(previousFuel - spentFuel);
             int previousTraveledKm = carsCollector.get(carModel).get(0).getTraveledDistance();
             carsCollector.get(carModel).get(0).setTraveledDistance(previousTraveledKm + traveledDistance);
-
         } else {
-
             System.out.println("Insufficient fuel for the drive");
         }
-
     }
 
     public double getQuantityFuel() {
