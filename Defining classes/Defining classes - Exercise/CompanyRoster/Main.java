@@ -11,7 +11,6 @@ public class Main {
         for (int i = 0; i < n; i++) {
 
             String[] tokens = scanner.nextLine().split("\\s+");
-
             String name = tokens[0];
             double salary = Double.parseDouble(tokens[1]);
             String position = tokens[2];
@@ -19,29 +18,23 @@ public class Main {
 
             checkTokensSizeAndChooseConstructor(tokens, name, salary, position, department, employeeList);
         }
-
         findAverageDepartmentSalary(employeeList);
-
     }
 
     private static void findAverageDepartmentSalary(List<Employee> employeeList) {
 
-        // На финала трябва да принтирам него:
         Map<String, List<Department>> departmentsMap = new LinkedHashMap<>();
-        //---------------------------------------------------------------
         for (Employee employee : employeeList) {
 
             String department = employee.getDepartment();
             if (!departmentsMap.containsKey(department)) {
 
                 departmentsMap.put(department, new ArrayList<>());
-
                 Department dp = new Department(employee.getName(), employee.getSalary(),
                         employee.getEmail(), employee.getAge());
 
                 departmentsMap.get(department).add(dp);
             } else {
-
                 Department dp = new Department(employee.getName(), employee.getSalary(),
                         employee.getEmail(), employee.getAge());
 
@@ -49,10 +42,8 @@ public class Main {
             }
         }
 
-
-        String biggestSalaryDepartment = "";  // Само с тази променлива ще разберем кой е отдела с най-добра заплатка
+        String biggestSalaryDepartment = ""; 
         double maxAverageSalary = Double.MIN_VALUE;
-
 
         for (Map.Entry<String, List<Department>> department : departmentsMap.entrySet()) {
 
@@ -71,7 +62,6 @@ public class Main {
             }
         }
 
-        // Output:
         for (Map.Entry<String, List<Department>> department : departmentsMap.entrySet()) {
 
             String currentDepartment = department.getKey();
@@ -82,18 +72,11 @@ public class Main {
                         .forEach(e-> System.out.printf("%s %.2f %s %d\n", e.getName(), e.getSalary(), e.getEmail(), e.getAge()));
                 return;
             }
-
-
         }
-
-
-
-
     }
 
     private static void checkTokensSizeAndChooseConstructor(String[] tokens, String name, double salary,
                                                             String position, String department, List<Employee> employeeList) {
-
         Employee employee;
         if (tokens.length == 4) {
             employee = new Employee(name, salary, position, department);
@@ -106,25 +89,19 @@ public class Main {
     }
 
     private static Employee checkEmailOrAgeIsSixthEl(String[] tokens, String name, double salary, String position, String department) {
-
         String fifthEl = tokens[tokens.length - 2];
         String sixtEl = tokens[tokens.length - 1];
-
         if (fifthEl.contains("@")) {
             return new Employee(name, salary, position, department, fifthEl, Integer.parseInt(sixtEl));
         }
-
         return new Employee(name, salary, position, department, sixtEl, Integer.parseInt(fifthEl));
     }
 
     private static Employee checkEmailOrAgeIsFifthEl(String[] tokens, String name, double salary, String position, String department) {
-
         String lastEl = tokens[tokens.length - 1];
-
         if (lastEl.contains("@")) {
             return new Employee(name, salary, position, department, lastEl);
         }
-
         return new Employee(name, salary, position, department, Integer.parseInt(lastEl));
     }
 }
