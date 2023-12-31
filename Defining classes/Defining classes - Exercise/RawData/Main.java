@@ -14,11 +14,6 @@ public class Main {
         for (int i = 0; i < n; i++) {
 
             String[] tokens = scanner.nextLine().split("\\s+");
-
-            // "{Model} {EngineSpeed} {EnginePower} {CargoWeight}
-            // {CargoType} {Tire1Pressure} {Tire1Age} {Tire2Pressure}
-            // {Tire2Age} {Tire3Pressure} {Tire3Age} {Tire4Pressure}
-
             String carModel = tokens[0];
 
             int engineSpeed = Integer.parseInt(tokens[1]);
@@ -30,7 +25,6 @@ public class Main {
             Cargo cargo = new Cargo(cargoWeight, cargoType);
 
             List<Tire> tireList = putsTireData(tokens);
-
             Car car = new Car(carModel, engine, cargo, tireList);
             carsList.add(car);
         }
@@ -50,11 +44,9 @@ public class Main {
                     .forEach(e -> System.out.println(e.getCarModel()));
 
         } else {
-
             carsList.stream()
                     .filter(e-> e.getCargo().getCargoType().equals(command))
                     .filter(e-> e.getEngine().getEnginePower() > 250).forEach(e-> System.out.println(e.getCarModel()));
-
         }
     }
 
