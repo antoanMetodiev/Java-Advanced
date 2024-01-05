@@ -27,12 +27,10 @@ public class Main {
                 trainer.setPokemonList(new ArrayList<>());
                 trainer.getPokemonList().add(pokemon);
                 trainerMap.put(trainerName, trainer);
-
             } else {
                 trainerMap.get(trainerName).getPokemonList().add(pokemon);
 
             }
-
             line = scanner.nextLine();
         }
 
@@ -40,25 +38,17 @@ public class Main {
         while (!line.equals("End")) {
 
             String wantedElement = line;
-
             checkTrainerMapForTheEl(wantedElement, trainerMap);
-
-
             line = scanner.nextLine();
         }
-
-        // "%s %d %d\n", this.name, this.badgesCount, this.pokemonList.size()
 
         trainerMap.entrySet().stream()
                 .sorted((e1, e2) -> Integer.compare(e2.getValue().getBadgesCount(), e1.getValue().getBadgesCount()))
                 .forEach(e -> System.out.printf("%s %d %d\n"
                         , e.getKey(), e.getValue().getBadgesCount(), e.getValue().getPokemonList().size()));
-
-
     }
 
     private static void checkTrainerMapForTheEl(String wantedItem, Map<String, Trainer> trainerMap) {
-
 
         for (Trainer value : trainerMap.values()) {
 
@@ -67,9 +57,7 @@ public class Main {
             for (int i = 0; i < pokemonListSize; i++) {
 
                 String currentElement = value.getPokemonList().get(i).getElement();
-
                 if (wantedItem.equals(currentElement)) {
-
                     wasInside = true;
                     break;
                 }
@@ -81,23 +69,19 @@ public class Main {
 
                 int previousBadgesCount = value.getBadgesCount();
                 String key = value.getName();
-
                 value.setBadgesCount(++previousBadgesCount);
             }
         }
     }
 
     private static void decreasesAllPokemonsHealth(Map<String, Trainer> trainerMap, Trainer value) {
-
-//        int listSize = ;
-
+        
         for (int i = 0; i < value.getPokemonList().size(); i++) {
 
             if (!value.getPokemonList().isEmpty()) {
 
                 int previousHealht = value.getPokemonList().get(i).getHealth();
                 String key = value.getName();
-
                 trainerMap.get(key).getPokemonList().get(i).setHealth(previousHealht - 10);
 
                 if (trainerMap.get(key).getPokemonList().get(i).getHealth() <= 0) {
@@ -105,7 +89,6 @@ public class Main {
                     i--;
                 }
             }
-
         }
     }
 }
