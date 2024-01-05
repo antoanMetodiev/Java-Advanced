@@ -9,12 +9,11 @@ public class Bee {
         fillMatrix(matrix, scanner);
         int[] cordinates = returnCordinates(matrix);
 
-        // Мойте постоянно променящи се координати:
         int currentRow = cordinates[0];
         int currentCol = cordinates[1];
 
         String command = scanner.nextLine();
-        int pollFlowers = 0;  // Брояч на Упрашени цветя
+        int pollFlowers = 0; 
         boolean isLost = false;
         while (!command.equals("End")) {
 
@@ -24,7 +23,6 @@ public class Bee {
 
                     currentRow += 1;
                     if (currentRow >= n) {
-                        // пчелата е излезнала от цялото поле!
                         matrix[currentRow - 1][currentCol] = ".";
                         isLost = true;
                         break;
@@ -50,7 +48,6 @@ public class Bee {
 
                     currentRow -= 1;
                     if (currentRow < 0) {
-                        // пчелата е излезнала от цялото поле!
                         matrix[currentRow + 1][currentCol] = ".";
                         isLost = true;
                         break;
@@ -76,7 +73,6 @@ public class Bee {
 
                     currentCol -= 1;
                     if (currentCol < 0) {
-                        // пчелата е излезнала от цялото поле!
                         matrix[currentRow][currentCol + 1] = ".";
                         isLost = true;
                         break;
@@ -102,7 +98,6 @@ public class Bee {
 
                     currentCol += 1;
                     if (currentCol >= n) {
-                        // пчелата е излезнала от цялото поле!
                         matrix[currentRow][currentCol - 1] = ".";
                         isLost = true;
                         break;
