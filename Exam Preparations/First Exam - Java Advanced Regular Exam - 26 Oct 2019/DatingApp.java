@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class DatingApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         Deque<Integer> boys = new ArrayDeque<>();
         Arrays.stream(scanner.nextLine().split("\\s+")).map(Integer::parseInt)
                 .forEach(boys::push);
@@ -19,10 +18,9 @@ public class DatingApp {
         while (!(boys.isEmpty()) && !(girls.isEmpty())) {
 
             if (checkCurrentValueIsZeroOrSmalllerNum(boys, girls)) {
-                continue;  // Ако ми даде true, то това означава че съм изтрил елемент
+                continue; 
             }
 
-            // special case
             if (checkVallueDivideOn25(boys, girls)) {
                 continue;
             }
@@ -42,8 +40,6 @@ public class DatingApp {
         }
 
         System.out.println("Matches: " + matchesCounter);
-
-        // Проверка дали и двете не са празни:
         if (boys.isEmpty() && girls.isEmpty()) {
             System.out.println("Males left: none");
             System.out.println("Females left: none");
@@ -62,14 +58,12 @@ public class DatingApp {
     }
 
     private static boolean checkVallueDivideOn25(Deque<Integer> boys, Deque<Integer> girls) {
-
         if (boys.peek() % 25 == 0) {
             if (boys.size() >= 2) {
                 boys.pop();
                 boys.pop();
                 return true;
             }
-
         } else if (girls.peek() % 25 == 0) {
             if (girls.size() >= 2) {
                 girls.poll();
@@ -81,13 +75,10 @@ public class DatingApp {
     }
 
     private static boolean checkCurrentValueIsZeroOrSmalllerNum(Deque<Integer> boys, Deque<Integer> girls) {
-
-        // Тук трябва да се види дали е само на един или и на двата да се премахват
         if (boys.peek() <= 0) {
             boys.pop();
             return true;
         }
-
         if (girls.peek() <= 0) {
             girls.poll();
             return true;
