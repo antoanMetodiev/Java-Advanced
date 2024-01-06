@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class StickyFingers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         int n = Integer.parseInt(scanner.nextLine());
         String[][] cityField = new String[n][n];
 
@@ -16,8 +15,7 @@ public class StickyFingers {
         int currentRow = myCordinates[0];
         int currentCol = myCordinates[1];
 
-        int stolenMoney = 0;  // Откраднати пари
-
+        int stolenMoney = 0; 
         for (String command : commandsList) {
 
             String el = "";
@@ -27,71 +25,66 @@ public class StickyFingers {
                     currentRow -= 1;
                     if (!(checkValidation(currentRow, currentCol, n))) {
                         System.out.println("You cannot leave the town, there is police outside!");
-                        currentRow++; // Връщам си позицията
+                        currentRow++; 
                         continue;
                     }
                     el = cityField[currentRow][currentCol];
                     if (el.equals("$")) {
 
-                        cityField[currentRow + 1][currentCol] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow + 1][currentCol] = "+"; 
                         cityField[currentRow][currentCol] = "D";
 
                         System.out.printf("You successfully stole %d$.\n", currentRow * currentCol);
                         stolenMoney += currentRow * currentCol;
-
                     } else if (el.equals("P")) {
                         cityField[currentRow][currentCol] = "#";
-                        cityField[currentRow + 1][currentCol] = "+"; // За да премахна D-то, си свалям реда
+                        cityField[currentRow + 1][currentCol] = "+"; 
                         System.out.printf("You got caught with %d$, and you are going to jail.\n", stolenMoney);
                         printMatrix(cityField);
                         return;
                     } else if (el.equals("+")) {
-                        cityField[currentRow + 1][currentCol] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow + 1][currentCol] = "+"; 
                         cityField[currentRow][currentCol] = "D";
                     }
-
                     break;
                 case "left":
 
                     currentCol -= 1;
                     if (!(checkValidation(currentRow, currentCol, n))) {
                         System.out.println("You cannot leave the town, there is police outside!");
-                        currentCol++; // Връщам си позицията
+                        currentCol++;
                         continue;
                     }
                     el = cityField[currentRow][currentCol];
                     if (el.equals("$")) {
 
-                        cityField[currentRow][currentCol + 1] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow][currentCol + 1] = "+"; 
                         cityField[currentRow][currentCol] = "D";
 
                         System.out.printf("You successfully stole %d$.\n", currentRow * currentCol);
                         stolenMoney += currentRow * currentCol;
-
                     } else if (el.equals("P")) {
                         cityField[currentRow][currentCol] = "#";
-                        cityField[currentRow][currentCol + 1] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow][currentCol + 1] = "+"; 
                         System.out.printf("You got caught with %d$, and you are going to jail.\n", stolenMoney);
                         printMatrix(cityField);
                         return;
                     } else if (el.equals("+")) {
-                        cityField[currentRow][currentCol + 1] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow][currentCol + 1] = "+"; 
                         cityField[currentRow][currentCol] = "D";
                     }
-
                     break;
                 case "right":
-
                     currentCol += 1;
                     if (!(checkValidation(currentRow, currentCol, n))) {
                         System.out.println("You cannot leave the town, there is police outside!");
-                        currentCol--; // Връщам си позицията
+                        currentCol--; 
                         continue;
                     }
                     el = cityField[currentRow][currentCol];
                     if (el.equals("$")) {
 
-                        cityField[currentRow][currentCol - 1] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow][currentCol - 1] = "+"; 
                         cityField[currentRow][currentCol] = "D";
 
                         System.out.printf("You successfully stole %d$.\n", currentRow * currentCol);
@@ -99,12 +92,12 @@ public class StickyFingers {
 
                     } else if (el.equals("P")) {
                         cityField[currentRow][currentCol] = "#";
-                        cityField[currentRow][currentCol - 1] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow][currentCol - 1] = "+"; 
                         System.out.printf("You got caught with %d$, and you are going to jail.\n", stolenMoney);
                         printMatrix(cityField);
                         return;
                     } else if (el.equals("+")) {
-                        cityField[currentRow][currentCol - 1] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow][currentCol - 1] = "+"; 
                         cityField[currentRow][currentCol] = "D";
                     }
 
@@ -114,33 +107,30 @@ public class StickyFingers {
                     currentRow += 1;
                     if (!(checkValidation(currentRow, currentCol, n))) {
                         System.out.println("You cannot leave the town, there is police outside!");
-                        currentRow--; // Връщам си позицията
+                        currentRow--; 
                         continue;
                     }
                     el = cityField[currentRow][currentCol];
                     if (el.equals("$")) {
 
-                        cityField[currentRow - 1][currentCol] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow - 1][currentCol] = "+"; 
                         cityField[currentRow][currentCol] = "D";
 
                         System.out.printf("You successfully stole %d$.\n", currentRow * currentCol);
                         stolenMoney += currentRow * currentCol;
-
                     } else if (el.equals("P")) {
                         cityField[currentRow][currentCol] = "#";
-                        cityField[currentRow - 1][currentCol] = "+"; // За да премахна D-то, си качвам реда
+                        cityField[currentRow - 1][currentCol] = "+"; 
                         System.out.printf("You got caught with %d$, and you are going to jail.\n", stolenMoney);
                         printMatrix(cityField);
                         return;
                     } else if (el.equals("+")) {
-                        cityField[currentRow - 1][currentCol] = "+"; // Слагам си +че на моето предишно място
+                        cityField[currentRow - 1][currentCol] = "+"; 
                         cityField[currentRow][currentCol] = "D";
                     }
                     break;
             }
         }
-
-        // Output:
         System.out.printf("Your last theft has finished successfully with %d$ in your pocket.\n", stolenMoney);
         printMatrix(cityField);
     }
