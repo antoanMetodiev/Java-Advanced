@@ -12,16 +12,13 @@ public class ChocolateTime {
         Arrays.stream(scanner.nextLine().split("\\s+"))
                 .forEach(e -> cacaoStack.push(Double.parseDouble(e)));
 
-        int bakingChocolate = 0; // 100
-        int darkChocolate = 0;  // 50
-        int milkChocolate = 0;  // 30
-
+        int bakingChocolate = 0; 
+        int darkChocolate = 0;  
+        int milkChocolate = 0;  
         while (!(milkQueue.isEmpty()) && !(cacaoStack.isEmpty())) {
 
-
-            double milkValue = milkQueue.peek(); // Стойноста на първото мляко
-            double cacaoValue = cacaoStack.peek(); // Стойноста на последното какао
-
+            double milkValue = milkQueue.peek(); 
+            double cacaoValue = cacaoStack.peek(); 
             double cacaoPercent = cacaoValue / (milkValue + cacaoValue);
 
             if (cacaoPercent * 100 == 30) {
@@ -38,14 +35,10 @@ public class ChocolateTime {
                 cacaoStack.pop();
             } else {
                 cacaoStack.pop();
-
-                // Увеличаваме стойноста на млякото с 10:
                 milkQueue.poll();
                 milkQueue.offer(milkValue + 10);
             }
-
         }
-
         printOutputs(bakingChocolate, darkChocolate, milkChocolate);
     }
 
@@ -55,7 +48,7 @@ public class ChocolateTime {
         } else {
             System.out.println("Sorry, but you didn't succeed to prepare all types of chocolates.");
         }
-
+        
         Map<String, Integer> chocolates = new LinkedHashMap<>();
         chocolates.put("# Baking Chocolate -->", bakingChocolate);
         chocolates.put("# Dark Chocolate -->", darkChocolate);
@@ -63,7 +56,5 @@ public class ChocolateTime {
 
         chocolates.entrySet().stream().filter(e -> e.getValue() > 0)
                 .forEach(e -> System.out.printf("%s %d\n", e.getKey(), e.getValue()));
-
-
     }
 }
