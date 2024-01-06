@@ -1,7 +1,6 @@
 package parking;
 
 public class Car {
-
     private String manufacturer;
     private String model;
     private int year;
