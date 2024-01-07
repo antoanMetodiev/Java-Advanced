@@ -12,17 +12,17 @@ public class SantasPresentFactory {
         Arrays.stream(scanner.nextLine().split("\\s+"))
                 .forEach(e -> magicQueue.offer(Integer.parseInt(e)));
 
-        int dollCount = 0;  // 150
-        int trainCount = 0; // 250
-        int bearCount = 0;  // 300
-        int bicycleCount = 0; // 400
+        int dollCount = 0;  
+        int trainCount = 0; 
+        int bearCount = 0;  
+        int bicycleCount = 0; 
 
         while (!(materialsStack.isEmpty()) && !(magicQueue.isEmpty())) {
-
+            
             int materialsCurrentValue = materialsStack.peek();
             int magicCurrentValue = magicQueue.peek();
             int result = materialsCurrentValue * magicCurrentValue;
-
+            
             if (result == 150) {
                 dollCount++;
                 materialsStack.pop();
