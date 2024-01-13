@@ -15,17 +15,14 @@ public class BrowserHistoryUpgrade {
                     if (stack.size() <= 1) {
                         System.out.println("no previous URLs");
                     } else {
-
                         forwardUrl.push(stack.pop());
                         System.out.println(stack.peek());
                     }
                     break;
                 case "forward":
-
                     if (forwardUrl.isEmpty()) {
                         System.out.println("no next URLs");
                     } else {
-
                         stack.push(forwardUrl.pop());
                         System.out.println(stack.peek());
                     }
