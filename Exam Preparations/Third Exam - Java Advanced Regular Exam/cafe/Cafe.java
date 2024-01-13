@@ -43,9 +43,7 @@ public class Cafe {
 
     public String report() {
         StringBuilder sb = new StringBuilder();
-
         sb.append(String.format("Employees working at Cafe %s:", this.name));
-
         this.employees.stream().forEach(e -> {
             sb.append(System.lineSeparator());
             sb.append(e);
