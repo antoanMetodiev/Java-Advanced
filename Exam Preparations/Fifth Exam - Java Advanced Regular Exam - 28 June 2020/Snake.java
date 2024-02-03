@@ -4,19 +4,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Snake {
+    // counters:
     private static int currentRow;
     private static int currentCol;
-
-    private static int amountFood; // Количество храна
-
-    private static List<List<Integer>> lairsCoordinates; // Координати на двете нори (легла).
-
+    private static int amountFood; 
+    
+    private static List<List<Integer>> lairsCoordinates; 
     private static String[][] field;
-
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         int n = Integer.parseInt(scanner.nextLine());
         field = new String[n][n];
 
@@ -25,7 +22,6 @@ public class Snake {
         searchBedsCoordinates(field);
 
         boolean isOver = false;
-
         String command = scanner.nextLine();
         while (amountFood < 10) {
 
@@ -34,7 +30,6 @@ public class Snake {
 
                     currentRow--;
                     if (checkIsSnakeLeftField(field)) {
-                        // TODO: If enter here, the snake is left in the field.
                         System.out.println("Game over!");
                         field[currentRow + 1][currentCol] = ".";
                         isOver = true;
@@ -55,14 +50,11 @@ public class Snake {
                         field[currentRow + 1][currentCol] = ".";
                         field[currentRow][currentCol] = "S";
                     }
-
-
                     break;
                 case "down":
 
                     currentRow++;
                     if (checkIsSnakeLeftField(field)) {
-                        // TODO: If enter here, the snake is left in the field.
                         System.out.println("Game over!");
                         field[currentRow - 1][currentCol] = ".";  // Връщане на позиция
                         isOver = true;
@@ -83,13 +75,11 @@ public class Snake {
                         field[currentRow - 1][currentCol] = ".";
                         field[currentRow][currentCol] = "S";
                     }
-
                     break;
                 case "left":
 
                     currentCol--;
                     if (checkIsSnakeLeftField(field)) {
-                        // TODO: If enter here, the snake is left in the field.
                         System.out.println("Game over!");
                         field[currentRow][currentCol + 1] = ".";  // Връщане на позиция
                         isOver = true;
@@ -110,13 +100,11 @@ public class Snake {
                         field[currentRow][currentCol + 1] = ".";
                         field[currentRow][currentCol] = "S";
                     }
-
                     break;
                 case "right":
 
                     currentCol++;
                     if (checkIsSnakeLeftField(field)) {
-                        // TODO: If enter here, the snake is left in the field.
                         System.out.println("Game over!");
                         field[currentRow][currentCol - 1] = ".";  // Връщане на позиция
                         isOver = true;
@@ -137,31 +125,24 @@ public class Snake {
                         field[currentRow][currentCol - 1] = ".";
                         field[currentRow][currentCol] = "S";
                     }
-
-
                     break;
             }
 
             if (isOver) {
                 break;
             }
-
             if (amountFood == 10) {
                 break;
             }
-
-
+            
             command = scanner.nextLine();
         }
-
         // Output:
         if (!isOver) {
             System.out.println("You won! You fed the snake.");
         }
         System.out.println("Food eaten: " + amountFood);
-
         printMatrix();
-
     }
 
     private static void printMatrix() {
@@ -181,7 +162,6 @@ public class Snake {
                 lairsCoordinates.remove(i);
             }
         }
-
         currentRow = lairsCoordinates.get(0).get(0);
         currentCol = lairsCoordinates.get(0).get(1);
     }
@@ -208,8 +188,7 @@ public class Snake {
         }
         return false;
     }
-
-
+    
     private static void searchSnakeCoordinates(String[][] field) {
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[i].length; j++) {
