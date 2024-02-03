@@ -6,10 +6,8 @@ import java.util.Scanner;
 public class Bombs {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         Deque<Integer> bombEffects = new ArrayDeque<>();
         Arrays.stream(scanner.nextLine().split(",\\s+")).forEach(e -> bombEffects.offer(Integer.parseInt(e)));
-
 
         Deque<Integer> bombCasing = new ArrayDeque<>();
         Arrays.stream(scanner.nextLine().split(",\\s+")).forEach(e -> bombCasing.push(Integer.parseInt(e)));
@@ -19,11 +17,9 @@ public class Bombs {
         int smokeDecoyBombs = 0; // 120
 
         boolean isDone = false;
-
         while (!bombEffects.isEmpty() && !bombCasing.isEmpty()) {
 
             int bombResult = bombEffects.peek() + bombCasing.peek();
-
             boolean isInside = false;
             if (bombResult == 40) {
                 daturaBombs++;
@@ -44,18 +40,15 @@ public class Bombs {
                 bombEffects.poll();
             }
 
-            // Ако има по 3 бомби от всеки вид:
+            // if all type bombs are 3:
             if (daturaBombs >= 3 && cherryBombs >= 3 && smokeDecoyBombs >= 3) {
                 System.out.println("Bene! You have successfully filled the bomb pouch!");
                 isDone = true;
                 break;
             }
-
         }
-
+        // Output:
         printOutput(isDone, daturaBombs, cherryBombs, smokeDecoyBombs, bombEffects, bombCasing);
-
-
     }
 
     private static void printOutput(boolean isDone, int daturaBombs, int cherryBombs, int smokeDecoyBombs, Deque<Integer> bombEffects, Deque<Integer> bombCasing) {
