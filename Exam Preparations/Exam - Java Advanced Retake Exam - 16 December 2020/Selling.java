@@ -6,36 +6,29 @@ import java.util.Scanner;
 public class Selling {
     private static Scanner scanner = new Scanner(System.in);
     private static String[][] field;
-
     private static int currentRow;
     private static int currentCol;
 
     private static List<List<Integer>> pillars = new ArrayList<>();
-
+    
     public static void main(String[] args) {
-
         int n = Integer.parseInt(scanner.nextLine());
         field = new String[n][n];
         fillMatrix();
         searchMyCoordinates();
-
         searchPillarsCoordinates();
 
         int myMoney = 0;
-
         boolean isOutside = false;
-
         String command = scanner.nextLine();
         while (myMoney < 50) {
 
             switch (command) {
                 case "up":
-
                     currentRow--;
                     if (!checkIndexesIsValid()) {
-                        // E излезнал:
                         isOutside = true;
-                        field[currentRow + 1][currentCol] = "-"; // Връщам позиция за да оставя "-";
+                        field[currentRow + 1][currentCol] = "-"; 
                         field[currentRow + 1][currentCol] = "-";
                         break;
                     }
@@ -43,34 +36,24 @@ public class Selling {
                     String el = field[currentRow][currentCol];
                     if (Character.isDigit(el.charAt(0))) {
 
-                        // add sum:
                         myMoney += Integer.parseInt(el);
                         if (myMoney >=  50) {
                             isOutside = true;
-                            field[currentRow + 1][currentCol] = "-"; // Връщам позиция за да оставя "-";
+                            field[currentRow + 1][currentCol] = "-"; 
                             field[currentRow][currentCol] = "S";
                             break;
                         }
 
                     } else if (el.equals("O")) {
-
-                        // SO---
-                        //-----
-                        //-----
-                        //-----
-                        //----O
-
-                        field[currentRow + 1][currentCol] = "-"; // Връщам позиция за да оставя "-";
-                        field[currentRow][currentCol] = "-"; //  оставям "-";
+                        field[currentRow + 1][currentCol] = "-"; 
+                        field[currentRow][currentCol] = "-";
 
                         moveOnTheOtherPillar();
                         field[currentRow][currentCol] = "S";
                     }
 
                     if (!el.equals("O")) {
-
-                        // Рутинно местене:
-                        field[currentRow + 1][currentCol] = "-"; // Връщам позиция за да оставя "-";
+                        field[currentRow + 1][currentCol] = "-"; 
                         field[currentRow][currentCol] = "S";
                     }
 
@@ -79,135 +62,98 @@ public class Selling {
 
                     currentRow++;
                     if (!checkIndexesIsValid()) {
-                        // E излезнал:
                         isOutside = true;
-                        field[currentRow - 1][currentCol] = "-"; // Връщам позиция за да оставя "-";
+                        field[currentRow - 1][currentCol] = "-"; 
                         break;
                     }
 
                     el = field[currentRow][currentCol];
                     if (Character.isDigit(el.charAt(0))) {
 
-                        // add sum:
                         myMoney += Integer.parseInt(el);
                         if (myMoney >=  50) {
                             isOutside = true;
-                            field[currentRow - 1][currentCol] = "-"; // Връщам позиция за да оставя "-";
+                            field[currentRow - 1][currentCol] = "-"; 
                             field[currentRow][currentCol] = "S";
                             break;
                         }
 
                     } else if (el.equals("O")) {
-
-                        // SO---
-                        //-----
-                        //-----
-                        //-----
-                        //----O
-
-                        field[currentRow - 1][currentCol] = "-"; // Връщам позиция за да оставя "-";
-                        field[currentRow][currentCol] = "-"; //  оставям "-";
+                        field[currentRow - 1][currentCol] = "-"; 
+                        field[currentRow][currentCol] = "-"; 
 
                         moveOnTheOtherPillar();
                         field[currentRow][currentCol] = "S";
                     }
 
                     if (!el.equals("O")) {
-
-                        // Рутинно местене:
-                        field[currentRow - 1][currentCol] = "-"; // Връщам позиция за да оставя "-";
+                        field[currentRow - 1][currentCol] = "-"; 
                         field[currentRow][currentCol] = "S";
                     }
-
 
                     break;
                 case "left":
 
                     currentCol--;
                     if (!checkIndexesIsValid()) {
-                        // E излезнал:
                         isOutside = true;
-                        field[currentRow][currentCol + 1] = "-"; // Връщам позиция за да оставя "-";
+                        field[currentRow][currentCol + 1] = "-";
                         break;
                     }
 
                     el = field[currentRow][currentCol];
                     if (Character.isDigit(el.charAt(0))) {
-
-                        // add sum:
                         myMoney += Integer.parseInt(el);
                         if (myMoney >=  50) {
                             isOutside = true;
-                            field[currentRow][currentCol + 1] = "-"; // Връщам позиция за да оставя "-";
+                            field[currentRow][currentCol + 1] = "-"; 
                             field[currentRow][currentCol] = "S";
                             break;
                         }
 
                     } else if (el.equals("O")) {
-
-                        // SO---
-                        //-----
-                        //-----
-                        //-----
-                        //----O
-
-                        field[currentRow][currentCol + 1] = "-"; // Връщам позиция за да оставя "-";
-                        field[currentRow][currentCol] = "-"; //  оставям "-";
+                        field[currentRow][currentCol + 1] = "-"; 
+                        field[currentRow][currentCol] = "-"; 
 
                         moveOnTheOtherPillar();
                         field[currentRow][currentCol] = "S";
                     }
 
                     if (!el.equals("O")) {
-
-                        // Рутинно местене:
-                        field[currentRow][currentCol + 1] = "-"; // Връщам позиция за да оставя "-";
+                        field[currentRow][currentCol + 1] = "-";
                         field[currentRow][currentCol] = "S";
                     }
-
-
                     break;
                 case "right":
 
                     currentCol++;
                     if (!checkIndexesIsValid()) {
-                        // E излезнал:
                         isOutside = true;
-                        field[currentRow][currentCol - 1] = "-"; // Връщам позиция за да оставя "-";
+                        field[currentRow][currentCol - 1] = "-"; 
                         break;
                     }
 
                     el = field[currentRow][currentCol];
                     if (Character.isDigit(el.charAt(0))) {
 
-                        // add sum:
                         myMoney += Integer.parseInt(el);
                         if (myMoney >=  50) {
                             isOutside = true;
-                            field[currentRow][currentCol - 1] = "-"; // Връщам позиция за да оставя "-";
+                            field[currentRow][currentCol - 1] = "-"; 
                             field[currentRow][currentCol] = "S";
                             break;
                         }
 
                     } else if (el.equals("O")) {
-
-                        // SO---
-                        //-----
-                        //-----
-                        //-----
-                        //----O
-
-                        field[currentRow][currentCol - 1] = "-"; // Връщам позиция за да оставя "-";
-                        field[currentRow][currentCol] = "-"; //  оставям "-";
+                        field[currentRow][currentCol - 1] = "-"; 
+                        field[currentRow][currentCol] = "-"; 
 
                         moveOnTheOtherPillar();
                         field[currentRow][currentCol] = "S";
                     }
 
                     if (!el.equals("O")) {
-
-                        // Рутинно местене:
-                        field[currentRow][currentCol - 1] = "-"; // Връщам позиция за да оставя "-";
+                        field[currentRow][currentCol - 1] = "-"; 
                         field[currentRow][currentCol] = "S";
                     }
                     break;
@@ -216,10 +162,8 @@ public class Selling {
             if (isOutside) {
                 break;
             }
-
             command = scanner.nextLine();
         }
-
         // Output:
         if (myMoney >= 50) {
             System.out.println("Good news! You succeeded in collecting enough money!");
@@ -238,20 +182,11 @@ public class Selling {
     }
 
     private static void moveOnTheOtherPillar() {
-
-        // SO---
-        //-----
-        //-----
-        //-----
-        //----O
-
         for (List<Integer> pillar : pillars) {
-
             if (pillar.get(0) == currentRow && pillar.get(1) == currentCol) {
                 pillars.remove(pillar);
             }
         }
-
         currentRow = pillars.get(0).get(0);
         currentCol = pillars.get(0).get(1);
     }
@@ -269,12 +204,10 @@ public class Selling {
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[i].length; j++) {
                 if (field[i][j].equals("O")) {
-
                     List<Integer> coordinates = new ArrayList<>();
                     coordinates.add(i);
                     coordinates.add(j);
                     pillars.add(coordinates);
-
                 }
             }
         }
