@@ -1,10 +1,6 @@
 package vetClinic;
 
 public class Pet {
-
-    // name: String
-    //age: int
-    //owner: String
     private String name;
     private int age;
     private String owner;
