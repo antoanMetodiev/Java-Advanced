@@ -9,7 +9,7 @@ public class FlowerWreaths {
         Deque<Integer> roses = new ArrayDeque<>();
         Arrays.stream(scanner.nextLine().split(",\\s+")).forEach(e -> roses.offer(Integer.parseInt(e)));
 
-        int wreathCount = 0; // Брой венци
+        int wreathCount = 0; 
         List<Integer> additionalFlowers = new ArrayList<>();
         while (!roses.isEmpty() && !lilies.isEmpty()) {
 
@@ -19,18 +19,15 @@ public class FlowerWreaths {
                 roses.poll();
                 lilies.pop();
             } else if (sum > 15) {
-
                 int decreasedValue = lilies.pop() - 2;
                 lilies.push(decreasedValue);
             } else if (sum < 15) {
-
                 int forLater = roses.poll() + lilies.pop();
                 additionalFlowers.add(forLater);
             }
         }
-
         // Output:
-        // check for Additional wreath:
+        // check for additional wreath:
         int moreWreathCount = additionalFlowers.stream().mapToInt(e -> e).sum() / 15;
         wreathCount += moreWreathCount;
 
