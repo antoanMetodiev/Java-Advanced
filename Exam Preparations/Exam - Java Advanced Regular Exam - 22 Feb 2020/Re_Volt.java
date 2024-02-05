@@ -2,39 +2,32 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Re_Volt {
-
-
     private static int currentRow;
     private static int currentCol;
 
     private static String[][] field;
-
     private static boolean isWin = false;
     private static boolean isValid = true;
-
-
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         int n = Integer.parseInt(scanner.nextLine());
         field = new String[n][n];
 
-        int commandsCount = Integer.parseInt(scanner.nextLine()); // Брой команди
+        int commandsCount = Integer.parseInt(scanner.nextLine()); 
         fillMatrix(scanner);
         searchCoordinates();
-
 
         for (int i = 0; i < commandsCount; i++) {
 
             String command = scanner.nextLine();
-
             isValid = true;  // нулиране на стойноста
             switch (command) {
                 case "up":
 
                     currentRow--;
                     validateIndexes();
-
                     if (field[currentRow][currentCol].equals("T")) {
                         currentRow++; // връщам си индекса
                         continue;
@@ -50,16 +43,11 @@ public class Re_Volt {
                         break;
                     } else if (el.equals("B")) {
 
-                        field[currentRow + 1][currentCol] = "-"; // Връщане на позиция:
+                        field[currentRow + 1][currentCol] = "-"; 
                         currentRow--;
                         validateIndexes();
                         field[currentRow][currentCol] = "f";
                     }
-
-                    // ----
-                    // ---B
-                    // --T-
-                    // -f-F
 
                     if (isValid && !el.equals("B")) {
 
@@ -75,7 +63,7 @@ public class Re_Volt {
                     validateIndexes();
 
                     if (field[currentRow][currentCol].equals("T")) {
-                        currentRow--; // връщам си индекса
+                        currentRow--;
                         continue;
                     }
 
@@ -89,16 +77,11 @@ public class Re_Volt {
                         break;
                     } else if (el.equals("B")) {
 
-                        field[currentRow - 1][currentCol] = "-"; // Връщане на позиция:
+                        field[currentRow - 1][currentCol] = "-";
                         currentRow++;
                         validateIndexes();
                         field[currentRow][currentCol] = "f";
                     }
-
-                    // ----
-                    // ---B
-                    // --T-
-                    // -f-F
 
                     if (isValid && !el.equals("B")) {
 
