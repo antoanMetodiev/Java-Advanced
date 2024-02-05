@@ -24,7 +24,6 @@ public class Guild {
     public boolean removePlayer(String name) {
         for (Player player : this.roster) {
             if (player.getName().equals(name)) {
-                // see this if you have wrong result:
                 this.roster.remove(player);
                 return true;
             }
@@ -51,8 +50,6 @@ public class Guild {
     }
 
     public Player[] kickPlayersByClass(String clazz) {
-        // see this if you have wrong result:
-
         List<Player> removedEl = new ArrayList<>();
         for (Player player : this.roster) {
             if (player.getClazz().equals(clazz)) {
@@ -84,6 +81,4 @@ public class Guild {
         }
         return result.toString();
     }
-
-
 }
