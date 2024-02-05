@@ -1,166 +1,113 @@
 import java.util.Scanner;
 
 public class Bee {
+    private static Scanner scanner = new Scanner(System.in);
+    
+    private static String[][] myField;
+    private static int currentRow;
+    private static int currentCol;
+    
+    private static int flowersCount = 0;
+    private static boolean isLeft = false;
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = Integer.parseInt(scanner.nextLine());
-        String[][] matrix = new String[n][n];
+        int n = Integer.parseInt(scanner.nextLine()); // sizes
+        myField = new String[n][n];
 
-        fillMatrix(matrix, scanner);
-        int[] cordinates = returnCordinates(matrix);
+        fillMatrix();
+        searchMyCoordinates();
+        processData();
+        printOutput();
+    }
 
-        int currentRow = cordinates[0];
-        int currentCol = cordinates[1];
-
-        String command = scanner.nextLine();
-        int pollFlowers = 0; 
-        boolean isLost = false;
-        while (!command.equals("End")) {
-
-            String el = "";
-            switch (command) {
-                case "down":
-
-                    currentRow += 1;
-                    if (currentRow >= n) {
-                        matrix[currentRow - 1][currentCol] = ".";
-                        isLost = true;
-                        break;
-                    } else {
-
-                        el = matrix[currentRow][currentCol];
-                        if (el.equals("f")) {
-                            pollFlowers++;
-                        } else if (el.equals("O")) {
-
-                            currentRow += 1;
-                            el = matrix[currentRow][currentCol];
-                            if (el.equals("f")) {
-                                pollFlowers++;
-                            }
-                            matrix[currentRow - 2][currentCol] = ".";
-                        }
-                        matrix[currentRow][currentCol] = "B";
-                        matrix[currentRow - 1][currentCol] = ".";
-                    }
-                    break;
-                case "up":
-
-                    currentRow -= 1;
-                    if (currentRow < 0) {
-                        matrix[currentRow + 1][currentCol] = ".";
-                        isLost = true;
-                        break;
-                    } else {
-
-                        el = matrix[currentRow][currentCol];
-                        if (el.equals("f")) {
-                            pollFlowers++;
-                        } else if (el.equals("O")) {
-
-                            currentRow -= 1;
-                            el = matrix[currentRow][currentCol];
-                            if (el.equals("f")) {
-                                pollFlowers++;
-                            }
-                            matrix[currentRow + 2][currentCol] = ".";
-                        }
-                        matrix[currentRow][currentCol] = "B";
-                        matrix[currentRow + 1][currentCol] = ".";
-                    }
-                    break;
-                case "left":
-
-                    currentCol -= 1;
-                    if (currentCol < 0) {
-                        matrix[currentRow][currentCol + 1] = ".";
-                        isLost = true;
-                        break;
-                    } else {
-
-                        el = matrix[currentRow][currentCol];
-                        if (el.equals("f")) {
-                            pollFlowers++;
-                        } else if (el.equals("O")) {
-
-                            currentCol -= 1;
-                            el = matrix[currentRow][currentCol];
-                            if (el.equals("f")) {
-                                pollFlowers++;
-                            }
-                            matrix[currentRow][currentCol + 2] = ".";
-                        }
-                        matrix[currentRow][currentCol] = "B";
-                        matrix[currentRow][currentCol + 1] = ".";
-                    }
-                    break;
-                case "right":
-
-                    currentCol += 1;
-                    if (currentCol >= n) {
-                        matrix[currentRow][currentCol - 1] = ".";
-                        isLost = true;
-                        break;
-                    } else {
-
-                        el = matrix[currentRow][currentCol];
-                        if (el.equals("f")) {
-                            pollFlowers++;
-                        } else if (el.equals("O")) {
-
-                            currentCol += 1;
-                            el = matrix[currentRow][currentCol];
-                            if (el.equals("f")) {
-                                pollFlowers++;
-                            }
-                            matrix[currentRow][currentCol - 2] = ".";
-                        }
-                        matrix[currentRow][currentCol] = "B";
-                        matrix[currentRow][currentCol - 1] = ".";
-                    }
-                    break;
-            }
-
-            if (isLost) {
-                break;
-            }
-            command = scanner.nextLine();
-        }
-        // Output:
-        if (isLost) {
+    private static void printOutput() {
+        if (isLeft) {
             System.out.println("The bee got lost!");
         }
-        if (pollFlowers >= 5){
-            System.out.printf("Great job, the bee manage to pollinate %d flowers!\n", pollFlowers);
+
+        if (flowersCount >= 5) {
+            System.out.printf("Great job, the bee manage to pollinate %d flowers!\n", flowersCount);
         } else {
-            System.out.printf("The bee couldn't pollinate the flowers, she needed %d flowers more\n", 5 - pollFlowers);
+            System.out.printf("The bee couldn't pollinate the flowers, she needed %d flowers more\n", 5 - flowersCount);
         }
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j]);
+        // print Matrix:
+        for (int i = 0; i < myField.length; i++) {
+            for (int j = 0; j < myField[i].length; j++) {
+                System.out.print(myField[i][j]);
             }
             System.out.println();
         }
     }
 
-    private static int[] returnCordinates(String[][] matrix) {
-        int[] cordinates = new int[2];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j].equals("B")) {
-                    cordinates[0] = i;
-                    cordinates[1] = j;
-                    return cordinates;
+    private static void processData() {
+        String command = scanner.nextLine();
+        while (!"End".equals(command)) {
+
+            myField[currentRow][currentCol] = ".";
+            moveMatrix(command);
+            if (isLeft) {
+                break;
+            }
+            if (myField[currentRow][currentCol].equals("O")) {
+
+                myField[currentRow][currentCol] = ".";
+                moveMatrix(command);
+                if (isLeft) {
+                    break;
+                }
+            }
+            if (myField[currentRow][currentCol].equals("f")) {
+                flowersCount++;
+            }
+            // my new coordinates:
+            myField[currentRow][currentCol] = "B";
+
+            command = scanner.nextLine();
+        }
+    }
+
+    private static void moveMatrix(String command) {
+        switch (command) {
+            case "up":
+                currentRow--;
+                break;
+            case "down":
+                currentRow++;
+                break;
+            case "right":
+                currentCol++;
+                break;
+            case "left":
+                currentCol--;
+                break;
+        }
+        // check indexes after move:
+        checkIndexesIsValid();
+    }
+
+    private static void checkIndexesIsValid() {
+        if (currentRow < 0 || currentRow >= myField.length) {
+            isLeft = true;
+        } else if (currentCol < 0 || currentCol >= myField.length) {
+            isLeft = true;
+        }
+    }
+
+    private static void searchMyCoordinates() {
+        for (int i = 0; i < myField.length; i++) {
+            for (int j = 0; j < myField[i].length; j++) {
+                if (myField[i][j].equals("B")) {
+                    currentRow = i;
+                    currentCol = j;
                 }
             }
         }
-        return null;
     }
 
-    private static void fillMatrix(String[][] matrix, Scanner scanner) {
-        for (int i = 0; i < matrix.length; i++) {
-            matrix[i] = scanner.nextLine().split("");
+    private static void fillMatrix() {
+        for (int i = 0; i < myField.length; i++) {
+            myField[i] = scanner.nextLine().split("");
         }
     }
 }
