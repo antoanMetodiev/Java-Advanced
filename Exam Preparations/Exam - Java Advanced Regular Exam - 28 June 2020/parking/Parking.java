@@ -22,8 +22,6 @@ public class Parking {
     }
 
     public boolean remove(String manufacturer, String model) {
-
-        // Ако не взима 100 точки пробрай с cikul:
         List<Car> collect = this.data.stream()
                 .filter(e -> e.getManufacturer().equals(manufacturer))
                 .filter(e -> e.getModel().equals(model))
