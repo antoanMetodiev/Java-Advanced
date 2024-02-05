@@ -56,6 +56,4 @@ public class Clinic {
         }
         return result.toString();
     }
-
-
 }
