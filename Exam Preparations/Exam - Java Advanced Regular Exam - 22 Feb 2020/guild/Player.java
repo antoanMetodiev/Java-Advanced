@@ -1,12 +1,6 @@
 package guild;
 
 public class Player {
-
-// ⦁	name: String
-//⦁	clazz: String
-//⦁	rank: String – "Trial" by default
-//⦁	description: String – "n/a" by default
-
     private String name;
     private String clazz;
     private String rank = "Trial";
