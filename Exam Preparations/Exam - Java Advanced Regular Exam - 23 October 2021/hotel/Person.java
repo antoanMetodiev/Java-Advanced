@@ -1,17 +1,9 @@
 package hotel;
 
 public class Person {
-
-    // ⦁	name: String
-    //⦁	id: int
-    //⦁	age: int
-    //⦁	hometown: String – "n/a" by default
-
     private String name;
     private int id;
     private int age;
-
-    // TODO: TUKA MOJE DA IMA GRESHKA TOVA DEFAULT DA E V CONSTRUKTORA!
     private String hometown = "n/a";
 
     public Person(String name, int id, int age, String hometown) {
