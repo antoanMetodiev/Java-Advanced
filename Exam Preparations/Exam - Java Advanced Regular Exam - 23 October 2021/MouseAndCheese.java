@@ -4,10 +4,8 @@ import java.util.Scanner;
 public class MouseAndCheese {
     private static final Scanner scanner = new Scanner(System.in);
     private static String[][] field;
-
     private static int currentRow;
     private static int currentCol;
-
     private static int eatenCheeseCount;
 
     public static void main(String[] args) {
@@ -17,7 +15,6 @@ public class MouseAndCheese {
         searchMouseCoordinates();
 
         boolean isInside = true;
-
         String command = scanner.nextLine();
         while (!"end".equals(command)) {
 
