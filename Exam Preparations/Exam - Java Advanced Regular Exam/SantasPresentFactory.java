@@ -3,7 +3,6 @@ import java.util.*;
 public class SantasPresentFactory {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         Deque<Integer> materialsStack = new ArrayDeque<>();
         Arrays.stream(scanner.nextLine().split("\\s+"))
                 .forEach(e -> materialsStack.push(Integer.parseInt(e)));
@@ -16,13 +15,11 @@ public class SantasPresentFactory {
         int trainCount = 0; 
         int bearCount = 0;  
         int bicycleCount = 0; 
-
         while (!(materialsStack.isEmpty()) && !(magicQueue.isEmpty())) {
             
             int materialsCurrentValue = materialsStack.peek();
             int magicCurrentValue = magicQueue.peek();
             int result = materialsCurrentValue * magicCurrentValue;
-            
             if (result == 150) {
                 dollCount++;
                 materialsStack.pop();
@@ -56,7 +53,6 @@ public class SantasPresentFactory {
                 magicQueue.poll();
             }
         }
-
         // Output:
         if ((dollCount > 0 && trainCount > 0) || (bicycleCount > 0 && bearCount > 0)) {
             System.out.println("The presents are crafted! Merry Christmas!");
@@ -73,13 +69,12 @@ public class SantasPresentFactory {
             System.out.println(String.join(", ", magicQueue.toString())
                     .replaceAll("[\\[\\]]", ""));
         }
-
+        
         Map<String, Integer> map = new TreeMap<>();
         map.put("Doll: ", dollCount);
         map.put("Wooden train: ", trainCount);
         map.put("Bicycle: ", bicycleCount);
         map.put("Teddy bear: ", bearCount);
-
         map.entrySet().stream().filter(e -> e.getValue() > 0)
                 .forEach(e -> System.out.println(e.getKey() + e.getValue()));
     }

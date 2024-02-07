@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Bomb {
     private static final Scanner scanner = new Scanner(System.in);
     private static String[][] field;
-
     private static int currentRow;
     private static int currentCol;
 
