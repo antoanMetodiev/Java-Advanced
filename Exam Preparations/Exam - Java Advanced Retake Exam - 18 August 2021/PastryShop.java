@@ -18,16 +18,9 @@ public class PastryShop {
 
         ingredients = new ArrayDeque<>();
         Arrays.stream(scanner.nextLine().split(" ")).forEach(e -> ingredients.push(Integer.parseInt(e)));
-
         while (!liquids.isEmpty() && !ingredients.isEmpty()) {
 
             int sum = liquids.peek() + ingredients.peek();
-
-            // Biscuit	25
-            //Cake	50
-            //Pastry	75
-            //Pie	100
-
             if (sum == 25) {
                 biscuitCount++;
             } else if (sum == 50) {
