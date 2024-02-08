@@ -15,24 +15,15 @@ public class FormulaOne {
         searchCoordinates();
 
         boolean isWinner = false;
-
         for (int i = 0; i < commandsCount; i++) {
-
+            
             String command = scanner.nextLine();
-
             int previousRow = currentRow;
             int previousCol = currentCol;
-
-            // .....
-            // .P...
-            // .B...
-            // ..T..
-            // .F...
 
             field[currentRow][currentCol] = ".";
             move(command);
             checkIndexIsValid();
-
             if (field[currentRow][currentCol].equals("T")) {
                 field[previousRow][previousCol] = "P";
                 currentRow = previousRow;
@@ -51,7 +42,6 @@ public class FormulaOne {
                 field[currentRow][currentCol] = "P";
                 break;
             }
-
             field[currentRow][currentCol] = "P";
         }
 
