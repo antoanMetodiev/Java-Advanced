@@ -20,7 +20,6 @@ public class ThroneConquering {
 
         String command = scanner.nextLine();
         while (true) {
-
             field[currentRow][currentCol] = "-";
             move(command.split("\\s+")[0], Integer.parseInt(command.split("\\s+")[1]),
                     Integer.parseInt(command.split("\\s+")[2]));
@@ -33,7 +32,6 @@ public class ThroneConquering {
                     isDead = true;
                     break;
                 }
-                // Това continue може и да не трябва да е тук!
                 command = scanner.nextLine();
                 continue;
             }
@@ -45,7 +43,7 @@ public class ThroneConquering {
             }
 
             if (field[currentRow][currentCol].equals("S")) {
-
+                
                 myEnergy -= 2;
                 if (myEnergy <= 0) {
                     field[currentRow][currentCol] = "X";
@@ -55,15 +53,12 @@ public class ThroneConquering {
                 field[currentRow][currentCol] = "P";
 
             } else if (field[currentRow][currentCol].equals("H")) {
-
                 isFound = true; // Helena is founded!
                 field[currentRow][currentCol] = "-";
                 break;
-
             } else if (field[currentRow][currentCol].equals("-")) {
                 field[currentRow][currentCol] = "P";
             }
-
             command = scanner.nextLine();
         }
 
