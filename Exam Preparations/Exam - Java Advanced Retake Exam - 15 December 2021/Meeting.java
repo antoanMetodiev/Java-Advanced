@@ -11,15 +11,14 @@ public class Meeting {
     public static void main(String[] args) {
         Arrays.stream(scanner.nextLine().split("\\s+")).forEach(e -> males.push(Integer.parseInt(e)));
         Arrays.stream(scanner.nextLine().split("\\s+")).forEach(e -> females.offer(Integer.parseInt(e)));
-
+        
         int matchesCount = 0;
         while (!males.isEmpty() && !females.isEmpty()) {
-
+            
             if (males.peek() <= 0) {
                 males.pop();
                 continue;
             }
-
             if (females.peek() <= 0) {
                 females.poll();
                 continue;
@@ -35,16 +34,14 @@ public class Meeting {
                 males.pop();
                 females.poll();
             } else {
-
                 int decreasedEl = males.pop() - 2;
                 males.push(decreasedEl);
                 females.poll();
             }
         }
-
+        
         // Output:
         System.out.println("Matches: " + matchesCount);
-
         System.out.print("Males left: ");
         if (males.isEmpty()) {
             System.out.println("none");
@@ -64,16 +61,14 @@ public class Meeting {
 
     private static boolean isSpecialCase() {
         if (males.peek() % 25 == 0) {
-
             males.pop();
             if (!males.isEmpty()) {
                 males.pop();
             }
             return true;
         }
-
+        
         if (females.peek() % 25 == 0) {
-
             females.poll();
             if (!females.isEmpty()) {
                 females.poll();
