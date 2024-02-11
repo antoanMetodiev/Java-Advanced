@@ -23,7 +23,6 @@ public class MouseInTheKitchen {
             if (!field[currentRow][currentCol].equals("@")) {
                 field[currentRow][currentCol] = "*";
             } else {
-                // TODO: NE SUM SIGUREN ZA TOVA!
                 command = scanner.nextLine();
                 continue;
             }
@@ -62,7 +61,6 @@ public class MouseInTheKitchen {
             }
 
             field[currentRow][currentCol] = "M";
-
             previousRow = currentRow;
             previousCol = currentCol;
             command = scanner.nextLine();
