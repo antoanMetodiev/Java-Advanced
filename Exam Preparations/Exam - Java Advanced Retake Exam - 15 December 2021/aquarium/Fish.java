@@ -1,11 +1,6 @@
 package aquarium;
 
 public class Fish {
-
-    /// ⦁	name: String
-    //⦁	color: String
-    //⦁	fins: int
-
     private String name;
     private String color;
     private int fins;
