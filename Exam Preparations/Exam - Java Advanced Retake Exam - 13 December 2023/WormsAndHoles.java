@@ -38,7 +38,6 @@ public class WormsAndHoles {
         if (worms.isEmpty() && beginWormsCount == matches) {
             System.out.println("Every worm found a suitable hole!");
         } else {
-
             System.out.print("Worms left: ");
             if (!worms.isEmpty()) {
                 int wormSize = worms.size();
