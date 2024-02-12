@@ -1,11 +1,6 @@
 package automotiveRepairShop;
 
 public class Vehicle {
-
-// ⦁	VIN: String
-//⦁	mileage: int
-//⦁	damage: String
-
     private String VIN;
     private int mileage;
     private String damage;
