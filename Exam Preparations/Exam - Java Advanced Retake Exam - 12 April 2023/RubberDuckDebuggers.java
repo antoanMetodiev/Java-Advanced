@@ -28,8 +28,6 @@ public class RubberDuckDebuggers {
             } else if (sum >= 181 && sum <= 240) {
                 yellowRubberDucks++;
             } else if (sum > 240) {
-
-                // TODO:
                 int decreasedValue = tasks.pop() - 2;
                 tasks.push(decreasedValue);
                 int time = times.poll();
@@ -39,7 +37,6 @@ public class RubberDuckDebuggers {
             times.poll();
             tasks.pop();
         }
-
         // Output:
         System.out.println("Congratulations, all tasks have been completed! Rubber ducks rewarded:");
         System.out.println("Darth Vader Ducky: " + darthVaderDucks);
