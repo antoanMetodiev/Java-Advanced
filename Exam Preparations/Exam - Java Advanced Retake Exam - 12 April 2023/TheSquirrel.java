@@ -20,17 +20,18 @@ public class TheSquirrel {
             field[currentRow][currentCol] = "*";
             move(commands[i]);
             if (!checkIndexIsValid()) {
-                // TODO:
                 System.out.println("The squirrel is out of the field.");
                 System.out.println("Hazelnuts collected: " + hazelCount);
                 return;
             } else if (field[currentRow][currentCol].equals("h")) {
+                
                 hazelCount++;
                 if (hazelCount == 3) {
                     System.out.println("Good job! You have collected all hazelnuts!");
                     System.out.println("Hazelnuts collected: " + hazelCount);
                     return;
                 }
+                
             } else if (field[currentRow][currentCol].equals("t")) {
                 System.out.println("Unfortunately, the squirrel stepped on a trap...");
                 System.out.println("Hazelnuts collected: " + hazelCount);
@@ -38,13 +39,11 @@ public class TheSquirrel {
             }
             field[currentRow][currentCol] = "s";
         }
-
         // Output:
         if (hazelCount < 3 && isInside) {
             System.out.println("There are more hazelnuts to collect.");
             System.out.println("Hazelnuts collected: " + hazelCount);
         }
-
     }
 
     private static void move(String command) {
