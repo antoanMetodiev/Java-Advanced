@@ -1,11 +1,6 @@
 package fishingPond;
 
 public class Fish {
-
-    // ⦁	species: String
-    //⦁	age: int
-    //⦁	matingSeason: String
-
     private String species;
     private int age;
     private String matingSeason;
