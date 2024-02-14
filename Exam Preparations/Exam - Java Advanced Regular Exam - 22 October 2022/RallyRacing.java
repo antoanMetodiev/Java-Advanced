@@ -11,7 +11,6 @@ public class RallyRacing {
     private static List<List<Integer>> trapsCoordinates = new ArrayList<>();
     private static int distanceCovered = 0;
 
-
     public static void main(String[] args) {
         int sizes = Integer.parseInt(scanner.nextLine());
         field = new String[sizes][sizes];
@@ -41,12 +40,11 @@ public class RallyRacing {
                 printMatrix();
                 return;
             }
-
             distanceCovered += 10;
             field[currentRow][currentCol] = "C";
             command = scanner.nextLine();
         }
-
+        
         // Output:
         System.out.printf("Racing car %s DNF.\n", carNumber);
         System.out.printf("Distance covered %d km.\n", distanceCovered);
