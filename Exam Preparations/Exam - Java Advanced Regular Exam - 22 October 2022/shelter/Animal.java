@@ -1,11 +1,6 @@
 package shelter;
 
 public class Animal {
-
-// ⦁	name: String
-//⦁	age: int
-//⦁	caretaker: String
-
     private String name;
     private int age;
     private String caretaker;
