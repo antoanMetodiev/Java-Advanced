@@ -1,11 +1,6 @@
 package magazine;
 
 public class Cloth {
-
-    // ⦁	color: String
-    //⦁	size: int
-    //⦁	type: String
-
     private String color;
     private int size;
     private String type;
