@@ -11,13 +11,11 @@ public class EnergyDrinks {
 
         Deque<Integer> energyDrinks = new ArrayDeque<>();
         Arrays.stream(scanner.nextLine().split(",\\s+")).forEach(e -> energyDrinks.offer(Integer.parseInt(e.trim())));
-
         int drinkedCaffeine = 0;
         while (!mgCaffeine.isEmpty() && !energyDrinks.isEmpty()) {
 
             int sum = mgCaffeine.peek() * energyDrinks.peek();
             if ((sum + drinkedCaffeine) <= 300) {
-
                 drinkedCaffeine += sum;
                 mgCaffeine.pop();
                 energyDrinks.poll();
@@ -26,7 +24,6 @@ public class EnergyDrinks {
                 mgCaffeine.pop();
                 int removedEl = energyDrinks.poll();
                 energyDrinks.offer(removedEl);
-
                 if ((drinkedCaffeine - 30) < 0) {
                     drinkedCaffeine = 0;
                 } else {
@@ -34,7 +31,7 @@ public class EnergyDrinks {
                 }
             }
         }
-
+        
         // Output:
         if (!energyDrinks.isEmpty()) {
             System.out.print("Drinks left: ");
