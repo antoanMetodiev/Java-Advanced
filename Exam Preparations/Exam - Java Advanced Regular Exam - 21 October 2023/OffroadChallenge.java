@@ -11,7 +11,7 @@ public class OffroadChallenge {
         Arrays.stream(scanner.nextLine().split("\\s+")).forEach(e -> initialFuel.push(Integer.parseInt(e)));
         Arrays.stream(scanner.nextLine().split("\\s+")).forEach(e -> additionalFuelConsum.offer(Integer.parseInt(e)));
         Arrays.stream(scanner.nextLine().split("\\s+")).forEach(e -> altitudes.offer(Integer.parseInt(e)));
-
+        
         while (!initialFuel.isEmpty() && !additionalFuelConsum.isEmpty() && !altitudes.isEmpty()) {
 
             int sum = initialFuel.peek() - additionalFuelConsum.peek();
